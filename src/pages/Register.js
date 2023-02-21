@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { store } from "../store";
 import { loginUser, registerUser } from "../features/user/userSlice";
+import { useNavigate } from "react-router-dom";
 
 const initialState = { name: "", email: "", password: "", isMember: true };
 
@@ -13,7 +14,7 @@ function Register() {
 
   const { user, isLoading } = useSelector((store) => store.user);
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -38,6 +39,14 @@ function Register() {
   const toggleMember = () => {
     SetValues({ ...values, isMember: !values.isMember });
   };
+
+  useEffect(() => {
+    if (user) {
+      setTimeout(() => {
+        navigate("/");
+      }, 2000);
+    }
+  }, [user]);
 
   return (
     <Wrapper className="full-page">
