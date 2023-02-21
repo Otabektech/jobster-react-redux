@@ -5,11 +5,14 @@ import { useSelector } from "react-redux";
 
 const BigSidebar = () => {
   const { isSidebarOpen } = useSelector((store) => store.user);
+
   return (
     <Wrapper>
       <div
         className={
-          isSidebarOpen ? "sidebar-container show-sidebar" : "sidebar-container"
+          isSidebarOpen
+            ? "sidebar-container "
+            : "sidebar-container show-sidebar"
         }
       >
         <div className="content">
