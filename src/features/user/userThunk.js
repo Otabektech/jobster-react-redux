@@ -25,6 +25,7 @@ export const updateUserThunk = async (url, user, thunkAPI) => {
     const resp = await customFetch.patch(url, user, {
       headers: {
         authorization: `Bearer ${thunkAPI.getState().user.user.token}`,
+        // authorization: `Bearer`,
       },
     });
     return resp.data;
